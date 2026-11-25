@@ -2,15 +2,34 @@
 
 Glej [RRZ_vaja3.pdf](RRZ_vaja3.pdf).
 
-## Virtualno okolje
+## Namestitev
 
-Za Ubuntu:
+Predpogoji: Python 3.12+, git.
+
+### Ubuntu
+
+On Ubuntu, install the venv module first (other distros include it):
 
 ```bash
-sudo apt-get install cmake build-essential python3-dev pkg-config libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev libswresample-dev libavfilter-dev pkg-config virtualenv
+git clone https://github.com/vicoslab/rrz_vaja3.git
+cd rrz_vaja3
+sudo apt install python3-venv
 
-virtualenv .
-source bin/activate
+#Virtualno okolje
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 
-pip install lerobot 'lerobot[feetech]'
+#USB Serial permissions
+sudo usermod -aG dialout $USER
+```
+
+### Windows
+
+```bat
+git clone https://github.com/vicoslab/rrz_vaja3.git
+cd rrz_vaja3
+py -3.12 -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
 ```

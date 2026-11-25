@@ -11,9 +11,9 @@ def calibrate(arm):
 	robot.disconnect()
 
 def watch():
-	seen = {arm.serial for arm in Arm.scan()}
+	seen = {arm.serial for arm in Arm.scan() if arm.calibrated}
 	if seen:
-		print(f"Skipping arms that are already plugged in: {', '.join(sorted(seen))}")
+		print(f"Skipping plugged in arms that are already calibrated: {', '.join(sorted(seen))}")
 
 	print("Plug in arms one at a time to calibrate them, Ctrl+C to stop")
 

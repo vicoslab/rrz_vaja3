@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.widgets import Slider
 
-from so101_visualization import RobotArtists, load_chain, style_axes
+from visualization import RobotArtists, load_chain, style_axes
 
 
 def sliders():

@@ -12,9 +12,9 @@ from ikpy.utils import geometry
 
 import numpy as np
 
-from arms import Arm
+from utils.arms import Arm
 
-from utils import *
+from utils.utils import *
 
 JOINT_NAMES = [
 	'shoulder_pan',
@@ -27,7 +27,7 @@ JOINT_NAMES = [
 
 def main():
 	URDF_PATH = 'so101_new_calib.urdf'
-	my_chain = ikpy.chain.Chain.from_urdf_file(URDF_PATH)
+	my_chain = ikpy.chain.Chain.from_urdf_file(URDF_PATH, tip="gripper_frame_link")
 	my_chain.active_links_mask[0]=False
 
 	parser = argparse.ArgumentParser()

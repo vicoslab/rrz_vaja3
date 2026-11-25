@@ -5,7 +5,7 @@ from serial.tools import list_ports
 
 from lerobot.robots.so_follower import SO101Follower, SO101FollowerConfig
 
-CALIBRATION_DIR = Path(__file__).parent / "calibrations"
+CALIBRATION_DIR = Path(__file__).parent.parent / "calibrations"
 
 @dataclass
 class Arm:

@@ -3,8 +3,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from so101_visualization import RobotArtists, load_chain, set_line_points, style_axes
-from utils import generate_figure_8, generate_square
+from visualization import RobotArtists, load_chain, set_line_points, style_axes
+from utils.utils import generate_figure_8, generate_square
 
 
 def IK_demo():

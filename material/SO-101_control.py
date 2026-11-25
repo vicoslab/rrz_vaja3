@@ -4,7 +4,7 @@ warnings.filterwarnings("ignore")
 import math, time
 import numpy as np
 np.set_printoptions(precision=2)
-from pathlib import Path
+import argparse
 
 import ikpy.chain
 from ikpy.inverse_kinematics import inverse_kinematic_optimization
@@ -12,7 +12,7 @@ from ikpy.utils import geometry
 
 import numpy as np
 
-from lerobot.robots.so_follower import SO101Follower, SO101FollowerConfig
+from arms import Arm
 
 from utils import *
 
@@ -30,14 +30,11 @@ def main():
 	my_chain = ikpy.chain.Chain.from_urdf_file(URDF_PATH)
 	my_chain.active_links_mask[0]=False
 
-	# Configure robot
-	port = "/dev/arm_f0"
-	# robot_config = SO101FollowerConfig(port=port, id='arm_f1')
-	calibration_dir='calibrations/'
-	robot_config = SO101FollowerConfig(port=port, id='arm_f0', calibration_dir=Path(calibration_dir))
-	
+	parser = argparse.ArgumentParser()
+	parser.add_argument("--port")
+	args = parser.parse_args()
 
-	robot = SO101Follower(robot_config)
+	robot = Arm.pick(args.port).follower()
 	robot.connect()
 	robot.bus.disable_torque()
 
@@ -60,8 +57,6 @@ def main():
 	for x in ls:
 		pt = np.array([0,0, x])+target_offset
 		points.append(pt)
-
-	points+=target_offset
 
 	while True:
 		for pt in points:

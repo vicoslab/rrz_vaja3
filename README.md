@@ -8,8 +8,6 @@ Predpogoji: Python 3.12+, git.
 
 ### Ubuntu
 
-On Ubuntu, install the venv module first (other distros include it):
-
 ```bash
 git clone https://github.com/vicoslab/rrz_vaja3.git
 cd rrz_vaja3
@@ -22,6 +20,10 @@ pip install -r requirements.txt
 
 #USB Serial permissions
 sudo usermod -aG dialout $USER
+
+cd material
+python3 control.py
+
 ```
 
 ### Windows
@@ -32,4 +34,7 @@ cd rrz_vaja3
 py -3.12 -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
+
+cd material
+python3 control.py
 ```
